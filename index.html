@@ -13,18 +13,16 @@
 <meta property="og:title" content="Ajay Singh Sisodiya — Product Manager & Data Analyst">
 <meta property="og:description" content="Product Analyst with 3+ years converting data into product decisions. 183% revenue growth, 6x earnings uplift, NextLeap Top Fellow.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://nextleap.app/portfolio/ajay-singh-sisodiya">
-<meta property="og:image" content="https://nextleap.app/portfolio/ajay-singh-sisodiya/og-image.jpg">
+<meta property="og:url" content="https://ajaysinghsisodiya.github.io">
 <meta property="og:site_name" content="Ajay Singh Sisodiya">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ajay Singh Sisodiya — Product Manager & Data Analyst">
 <meta name="twitter:description" content="Product Analyst with 3+ years converting data into product decisions. 183% revenue growth, 6x earnings uplift.">
-<meta name="twitter:image" content="https://nextleap.app/portfolio/ajay-singh-sisodiya/og-image.jpg">
 
 <!-- Canonical -->
-<link rel="canonical" href="https://nextleap.app/portfolio/ajay-singh-sisodiya">
+<link rel="canonical" href="https://ajaysinghsisodiya.github.io">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -33,18 +31,10 @@
   "@type": "Person",
   "name": "Ajay Singh Sisodiya",
   "jobTitle": "Product Manager & Data Analyst",
-  "url": "https://nextleap.app/portfolio/ajay-singh-sisodiya",
-  "sameAs": [
-    "https://linkedin.com/in/ajay-singh-sisodiya"
-  ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "InstaAstro"
-  },
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "B.K. Birla Institute of Engineering & Technology"
-  },
+  "url": "https://ajaysinghsisodiya.github.io",
+  "sameAs": ["https://linkedin.com/in/ajay-singh-sisodiya"],
+  "worksFor": {"@type": "Organization", "name": "InstaAstro"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "B.K. Birla Institute of Engineering & Technology"},
   "knowsAbout": ["Product Management", "Data Analysis", "SQL", "Figma", "User Research", "A/B Testing"]
 }
 </script>
@@ -56,83 +46,53 @@
   --bg:#f8f9fb; --bg-elevated:#ffffff; --border:#e2e4e9; --border-strong:#d0d3db;
   --text:#0f1117; --text-secondary:#4a4f5c; --text-muted:#8b919d;
   --accent:#5b4cdb; --accent-dim:#e8e5ff; --accent-hover:#4535c7;
-  --success:#22c55e; --danger:#ef4444; --warning:#f59e0b;
+  --success:#22c55e; --danger:#ef4444;
   --font:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
   --shadow-sm:0 1px 2px rgba(0,0,0,0.04); --shadow:0 4px 16px rgba(0,0,0,0.06); --shadow-lg:0 12px 40px rgba(0,0,0,0.08);
   --radius:14px; --radius-sm:10px;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
-body{
-  background:var(--bg); color:var(--text); font-family:var(--font);
-  line-height:1.65; -webkit-font-smoothing:antialiased;
-}
+body{background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.65; -webkit-font-smoothing:antialiased;}
 .container{max-width:920px; margin:0 auto; padding:0 1.5rem;}
 
-/* MAINTENANCE OVERLAY */
-#maintenanceOverlay{
-  display:none; position:fixed; inset:0; z-index:9999;
-  background:var(--bg); flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:2rem;
-}
-#maintenanceOverlay.active{display:flex;}
-#maintenanceOverlay .maint-icon{font-size:64px; margin-bottom:1rem;}
-#maintenanceOverlay h2{font-size:28px; font-weight:700; color:var(--text); margin-bottom:12px; text-transform:none; letter-spacing:0;}
-#maintenanceOverlay p{font-size:16px; color:var(--text-secondary); max-width:420px;}
-#maintenanceOverlay .maint-btn{
-  margin-top:24px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm);
-  padding:12px 28px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s;
-}
-#maintenanceOverlay .maint-btn:hover{background:var(--accent-hover);}
-
 /* ADMIN PANEL */
-#adminPanel{
-  display:none; position:fixed; top:70px; right:16px; z-index:200;
-  background:var(--bg-elevated); border:1.5px solid var(--border); border-radius:var(--radius);
-  padding:20px; width:320px; box-shadow:var(--shadow-lg);
-}
+#adminPanel{display:none; position:fixed; top:70px; right:16px; z-index:200; background:var(--bg-elevated); border:1.5px solid var(--border); border-radius:var(--radius); padding:20px; width:340px; max-height:80vh; overflow-y:auto; box-shadow:var(--shadow-lg);}
 #adminPanel.active{display:block;}
 #adminPanel h3{font-size:14px; font-weight:700; margin-bottom:14px; color:var(--text);}
 #adminPanel .admin-row{margin-bottom:14px;}
-#adminPanel label{display:block; font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px;}
-#adminPanel input[type="text"], #adminPanel input[type="password"]{
-  width:100%; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm);
-  padding:9px 12px; font-size:13px; font-family:var(--font); color:var(--text);
+#adminPanel label{display:block; font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px;}
+#adminPanel input[type="text"], #adminPanel input[type="password"], #adminPanel input[type="url"]{
+  width:100%; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:9px 12px; font-size:13px; font-family:var(--font); color:var(--text);
 }
 #adminPanel input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim);}
 #adminPanel .toggle-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
 #adminPanel .toggle-row span{font-size:13px; font-weight:600; color:var(--text-secondary);}
-#adminPanel .toggle-switch{
-  width:44px; height:24px; background:var(--border-strong); border-radius:12px; position:relative; cursor:pointer; transition:background 0.2s;
-}
+#adminPanel .toggle-switch{width:44px; height:24px; background:var(--border-strong); border-radius:12px; position:relative; cursor:pointer; transition:background 0.2s;}
 #adminPanel .toggle-switch.on{background:var(--accent);}
-#adminPanel .toggle-switch::after{
-  content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; background:#fff; border-radius:50%; transition:transform 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.15);
-}
+#adminPanel .toggle-switch::after{content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; background:#fff; border-radius:50%; transition:transform 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.15);}
 #adminPanel .toggle-switch.on::after{transform:translateX(20px);}
-#adminPanel .admin-btn{
-  width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm);
-  padding:10px; font-size:13px; font-weight:600; cursor:pointer; transition:background 0.2s; margin-top:4px;
-}
+#adminPanel .admin-btn{width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:10px; font-size:13px; font-weight:600; cursor:pointer; transition:background 0.2s; margin-top:4px;}
 #adminPanel .admin-btn:hover{background:var(--accent-hover);}
 #adminPanel .admin-btn.secondary{background:var(--bg); color:var(--text); border:1.5px solid var(--border-strong);}
 #adminPanel .admin-btn.secondary:hover{border-color:var(--accent); color:var(--accent);}
-#adminPanel .admin-status{font-size:11px; color:var(--success); margin-top:8px; text-align:center; font-weight:600;}
-#adminPanel .admin-status.hidden{color:var(--danger);}
-#adminToggleBtn{
-  position:fixed; bottom:20px; right:20px; z-index:150;
-  width:48px; height:48px; border-radius:50%; background:var(--accent); color:#fff;
-  border:none; font-size:20px; cursor:pointer; box-shadow:var(--shadow-lg);
-  display:flex; align-items:center; justify-content:center; transition:transform 0.2s, background 0.2s;
-}
+#adminPanel .admin-status{font-size:11px; color:var(--success); margin-top:8px; text-align:center; font-weight:600; display:none;}
+#adminPanel .admin-divider{border-top:1px solid var(--border); margin:14px 0;}
+#adminPanel .admin-hint{font-size:11px; color:var(--text-muted); line-height:1.5;}
+#adminToggleBtn{position:fixed; bottom:20px; right:20px; z-index:150; width:48px; height:48px; border-radius:50%; background:var(--accent); color:#fff; border:none; font-size:20px; cursor:pointer; box-shadow:var(--shadow-lg); display:flex; align-items:center; justify-content:center; transition:transform 0.2s, background 0.2s;}
 #adminToggleBtn:hover{transform:scale(1.08); background:var(--accent-hover);}
 
+/* MAINTENANCE */
+#maintenanceOverlay{display:none; position:fixed; inset:0; z-index:9999; background:var(--bg); flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem;}
+#maintenanceOverlay.active{display:flex;}
+#maintenanceOverlay .maint-icon{font-size:64px; margin-bottom:1rem;}
+#maintenanceOverlay h2{font-size:28px; font-weight:700; color:var(--text); margin-bottom:12px;}
+#maintenanceOverlay p{font-size:16px; color:var(--text-secondary); max-width:420px;}
+#maintenanceOverlay .maint-btn{margin-top:24px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:12px 28px; font-size:14px; font-weight:600; cursor:pointer;}
+#maintenanceOverlay .maint-btn:hover{background:var(--accent-hover);}
+
 /* NAV */
-nav{
-  position:sticky; top:0; z-index:100;
-  background:rgba(248,249,251,0.9); backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
+nav{position:sticky; top:0; z-index:100; background:rgba(248,249,251,0.9); backdrop-filter:blur(14px); border-bottom:1px solid var(--border);}
 .nav-inner{max-width:920px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:60px;}
 .nav-logo{font-weight:700; font-size:15px; color:var(--text); letter-spacing:-0.3px;}
 .nav-links{display:flex; gap:28px;}
@@ -140,47 +100,24 @@ nav{
 .nav-links a:hover{color:var(--accent);}
 .nav-links a::after{content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--accent); border-radius:2px; transition:width 0.25s;}
 .nav-links a:hover::after{width:100%;}
-.nav-cta{
-  background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:8px 18px;
-  font-size:13px; font-weight:600; cursor:pointer; text-decoration:none; transition:background 0.2s, transform 0.15s;
-}
+.nav-cta{background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:8px 18px; font-size:13px; font-weight:600; cursor:pointer; text-decoration:none; transition:background 0.2s, transform 0.15s;}
 .nav-cta:hover{background:var(--accent-hover); transform:translateY(-1px);}
 
 /* HERO */
 .hero{padding:5rem 0 3.5rem; display:flex; gap:2.5rem; align-items:center;}
-.avatar{
-  width:130px; height:130px; border-radius:50%; flex-shrink:0;
-  background:var(--bg-elevated); border:2.5px dashed var(--border-strong);
-  display:flex; align-items:center; justify-content:center;
-  font-size:13px; color:var(--text-muted); text-align:center; cursor:pointer;
-  overflow:hidden; position:relative; box-shadow:var(--shadow);
-  transition:transform 0.3s, box-shadow 0.3s;
-}
+.avatar{width:130px; height:130px; border-radius:50%; flex-shrink:0; background:var(--bg-elevated); border:2.5px solid var(--border); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; box-shadow:var(--shadow); transition:transform 0.3s, box-shadow 0.3s;}
 .avatar:hover{transform:scale(1.04); box-shadow:var(--shadow-lg);}
 .avatar img{width:100%; height:100%; object-fit:cover;}
-.avatar input{display:none;}
+.avatar .avatar-fallback{font-size:13px; color:var(--text-muted); text-align:center;}
 .hero-text h1{font-size:36px; font-weight:700; margin-bottom:8px; letter-spacing:-0.8px; color:var(--text);}
 .hero-text .role{color:var(--accent); font-size:17px; font-weight:600; margin-bottom:14px;}
 .hero-text .contact{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
-.hero-text .contact a, .hero-text .contact span{
-  color:var(--text-secondary); text-decoration:none; font-size:14px;
-  border-bottom:1px solid var(--border-strong); padding-bottom:1px; transition:all 0.2s;
-}
+.hero-text .contact a, .hero-text .contact span{color:var(--text-secondary); text-decoration:none; font-size:14px; border-bottom:1px solid var(--border-strong); padding-bottom:1px; transition:all 0.2s;}
 .hero-text .contact a:hover{color:var(--accent); border-color:var(--accent);}
 .hero-btns{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;}
-.btn-primary{
-  background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm);
-  padding:11px 22px; font-size:14px; font-weight:600; cursor:pointer;
-  text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-  transition:background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow:0 2px 8px rgba(91,76,219,0.25);
-}
+.btn-primary{background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:11px 22px; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow:0 2px 8px rgba(91,76,219,0.25);}
 .btn-primary:hover{background:var(--accent-hover); transform:translateY(-2px); box-shadow:0 4px 14px rgba(91,76,219,0.35);}
-.btn-secondary{
-  background:var(--bg-elevated); color:var(--text); border:1.5px solid var(--border-strong);
-  border-radius:var(--radius-sm); padding:11px 22px; font-size:14px; font-weight:600;
-  cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-  transition:all 0.2s;
-}
+.btn-secondary{background:var(--bg-elevated); color:var(--text); border:1.5px solid var(--border-strong); border-radius:var(--radius-sm); padding:11px 22px; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s;}
 .btn-secondary:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow);}
 
 /* SECTIONS */
@@ -191,11 +128,7 @@ h2{font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--tex
 
 /* METRICS */
 .metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:2rem;}
-.metric{
-  background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
-  padding:1.2rem 1rem; text-align:center; box-shadow:var(--shadow-sm);
-  transition:transform 0.25s, box-shadow 0.25s;
-}
+.metric{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem 1rem; text-align:center; box-shadow:var(--shadow-sm); transition:transform 0.25s, box-shadow 0.25s;}
 .metric:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
 .metric .num{font-size:26px; font-weight:700; color:var(--accent); letter-spacing:-0.5px;}
 .metric .lbl{font-size:12.5px; color:var(--text-muted); margin-top:6px; font-weight:500;}
@@ -214,84 +147,42 @@ h2{font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--tex
 
 /* SKILLS */
 .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;}
-.skill-group{
-  background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
-  padding:1.3rem 1.2rem; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s;
-}
+.skill-group{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:1.3rem 1.2rem; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s;}
 .skill-group:hover{box-shadow:var(--shadow);}
 .skill-group h3{font-size:14px; margin-bottom:12px; color:var(--text); font-weight:700;}
 .chips{display:flex; flex-wrap:wrap; gap:8px;}
-.chip{
-  background:var(--accent-dim); border:none; padding:5px 13px; border-radius:20px;
-  font-size:12.5px; color:var(--accent); font-weight:600; transition:transform 0.15s;
-}
+.chip{background:var(--accent-dim); border:none; padding:5px 13px; border-radius:20px; font-size:12.5px; color:var(--accent); font-weight:600; transition:transform 0.15s;}
 .chip:hover{transform:scale(1.05);}
 
 /* EDUCATION */
-.edu-card{
-  background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius);
-  padding:1.5rem; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s;
-}
+.edu-card{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s;}
 .edu-card:hover{box-shadow:var(--shadow);}
 .edu-title{font-weight:700; font-size:17px; color:var(--text);}
 .edu-org{color:var(--accent); font-size:14.5px; font-weight:600; margin:4px 0 10px;}
 .edu-note{color:var(--text-secondary); font-size:14.5px; line-height:1.6;}
 
-/* CASE STUDIES */
-.upload-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-.upload-card{
-  background:var(--bg-elevated); border:1.5px dashed var(--border-strong); border-radius:var(--radius);
-  padding:1.5rem; text-align:center; cursor:pointer; transition:all 0.2s;
-}
-.upload-card:hover{border-color:var(--accent); background:var(--accent-dim); transform:translateY(-2px); box-shadow:var(--shadow);}
-.upload-card .ico{font-size:24px; margin-bottom:8px;}
-.upload-card .label{font-size:14.5px; font-weight:600; color:var(--text);}
-.upload-card .sub{font-size:12.5px; color:var(--text-muted); margin-top:4px;}
-.upload-card input{display:none;}
-.file-list{margin-top:1.2rem; display:flex; flex-direction:column; gap:10px;}
-.file-row{
-  display:flex; align-items:center; justify-content:space-between;
-  background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-sm);
-  padding:10px 14px; font-size:14px; box-shadow:var(--shadow-sm); transition:box-shadow 0.2s;
-}
-.file-row:hover{box-shadow:var(--shadow);}
-.file-row a{color:var(--accent); text-decoration:none; font-weight:600;}
-.file-row button{background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:13px; font-weight:600; transition:color 0.2s;}
-.file-row button:hover{color:var(--danger);}
-.link-input-row{display:flex; gap:10px; margin-top:1.2rem;}
-.link-input-row input{
-  flex:1; background:var(--bg-elevated); border:1.5px solid var(--border); border-radius:var(--radius-sm);
-  padding:11px 14px; color:var(--text); font-size:14px; font-family:var(--font); transition:border-color 0.2s;
-}
-.link-input-row input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim);}
-.link-input-row input::placeholder{color:var(--text-muted);}
-.link-input-row button{
-  background:var(--accent); border:none; color:#fff; border-radius:var(--radius-sm);
-  padding:11px 20px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s;
-}
-.link-input-row button:hover{background:var(--accent-hover);}
+/* CASE STUDIES - PUBLIC VIEW */
+.case-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.case-card{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow-sm); transition:all 0.25s; text-decoration:none; color:inherit; display:block;}
+.case-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--accent);}
+.case-card .case-ico{font-size:28px; margin-bottom:10px;}
+.case-card .case-title{font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px;}
+.case-card .case-desc{font-size:13px; color:var(--text-muted);}
+.case-empty{text-align:center; padding:2rem; color:var(--text-muted); font-size:14px;}
 
-/* VIDEO */
-.video-box{
-  background:var(--bg-elevated); border:1.5px dashed var(--border-strong); border-radius:var(--radius);
-  aspect-ratio:16/9; max-width:520px; display:flex; align-items:center; justify-content:center;
-  flex-direction:column; cursor:pointer; margin-top:1.2rem; transition:all 0.2s;
-}
-.video-box:hover{border-color:var(--accent); background:var(--accent-dim); transform:translateY(-2px); box-shadow:var(--shadow);}
-.video-box .ico{font-size:28px; color:var(--accent); margin-bottom:8px;}
-.video-box span{font-size:14.5px; color:var(--text-muted); font-weight:500;}
-.video-box video{width:100%; height:100%; border-radius:var(--radius); object-fit:cover;}
-.video-box input{display:none;}
+/* VIDEO - PUBLIC VIEW */
+.video-container{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; max-width:560px; box-shadow:var(--shadow-sm);}
+.video-container video{width:100%; height:auto; display:block;}
+.video-placeholder{background:var(--bg-elevated); border:1.5px dashed var(--border-strong); border-radius:var(--radius); aspect-ratio:16/9; max-width:520px; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:2rem;}
+.video-placeholder .ico{font-size:32px; margin-bottom:8px;}
+.video-placeholder span{font-size:14px; color:var(--text-muted);}
 
 /* CONTACT FORM */
 .contact-section{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius); padding:2.5rem; box-shadow:var(--shadow);}
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
 .contact-grid.full{grid-template-columns:1fr;}
 .contact-section label{display:block; font-size:13px; font-weight:600; color:var(--text-muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;}
-.contact-section input, .contact-section textarea{
-  width:100%; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm);
-  padding:12px 14px; color:var(--text); font-size:15px; font-family:var(--font); transition:border-color 0.2s, box-shadow 0.2s;
-}
+.contact-section input, .contact-section textarea{width:100%; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; color:var(--text); font-size:15px; font-family:var(--font); transition:border-color 0.2s, box-shadow 0.2s;}
 .contact-section input:focus, .contact-section textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-dim);}
 .contact-section input::placeholder, .contact-section textarea::placeholder{color:var(--text-muted);}
 .contact-section textarea{min-height:120px; resize:vertical;}
@@ -310,11 +201,12 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
   .hero-btns{justify-content:center;}
   .metrics{grid-template-columns:repeat(2,1fr);}
   .skill-groups{grid-template-columns:1fr;}
-  .upload-grid{grid-template-columns:1fr;}
+  .case-grid{grid-template-columns:1fr;}
   .contact-grid{grid-template-columns:1fr;}
   #adminPanel{width:calc(100vw - 32px); right:16px; left:16px;}
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -326,30 +218,76 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
   <button class="maint-btn" onclick="showAdmin()">Admin Access</button>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ADMIN PANEL (Hidden from public) -->
 <button id="adminToggleBtn" onclick="toggleAdmin()" title="Admin Panel">&#9881;</button>
 <div id="adminPanel">
   <h3>&#128274; Admin Panel</h3>
+
   <div class="admin-row">
     <label>Password</label>
     <input type="password" id="adminPass" placeholder="Enter admin password">
   </div>
+
   <div class="toggle-row">
     <span>Site Visible</span>
     <div class="toggle-switch on" id="siteToggle" onclick="toggleSite()"></div>
   </div>
-  <div class="toggle-row">
-    <span>Resume Link</span>
+
+  <div class="admin-divider"></div>
+  <h3 style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">CONTENT SETTINGS</h3>
+
+  <div class="admin-row">
+    <label>Avatar Image URL</label>
+    <input type="url" id="adminAvatar" placeholder="https://... or images/avatar.jpg">
+  </div>
+
+  <div class="admin-row">
+    <label>Resume PDF URL</label>
+    <input type="url" id="adminResume" placeholder="https://... or files/resume.pdf">
+  </div>
+
+  <div class="admin-row">
+    <label>Intro Video URL</label>
+    <input type="url" id="adminVideo" placeholder="https://... or videos/intro.mp4">
+  </div>
+
+  <div class="admin-divider"></div>
+  <h3 style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">CASE STUDIES</h3>
+
+  <div class="admin-row">
+    <label>Case Study 1 — Title | URL</label>
+    <input type="text" id="adminCase1" placeholder="InstaAstro Case Study | https://...">
   </div>
   <div class="admin-row">
-    <input type="text" id="resumeLinkInput" placeholder="Paste Google Drive / Dropbox share link">
+    <label>Case Study 2 — Title | URL</label>
+    <input type="text" id="adminCase2" placeholder="Finease PM Project | https://...">
   </div>
+  <div class="admin-row">
+    <label>Case Study 3 — Title | URL</label>
+    <input type="text" id="adminCase3" placeholder="Data Dashboard | https://...">
+  </div>
+  <div class="admin-row">
+    <label>Case Study 4 — Title | URL</label>
+    <input type="text" id="adminCase4" placeholder="A/B Testing Analysis | https://...">
+  </div>
+
   <button class="admin-btn" onclick="saveAdminSettings()">Save Settings</button>
   <button class="admin-btn secondary" onclick="toggleAdmin()" style="margin-top:8px;">Close</button>
+
   <div class="admin-status" id="adminStatus">Settings saved!</div>
+
+  <div class="admin-divider"></div>
+  <p class="admin-hint">
+    <strong>How to upload files:</strong><br>
+    1. Go to your GitHub repo<br>
+    2. Create folders: <code>images/</code>, <code>files/</code>, <code>videos/</code><br>
+    3. Upload files directly to those folders<br>
+    4. Reference them as: <code>images/avatar.jpg</code><br>
+    5. Or use external URLs (Google Drive, Dropbox, etc.)
+  </p>
 </div>
 
-<!-- MAIN SITE -->
+<!-- MAIN SITE (Public View) -->
 <div id="mainSite">
 
 <nav>
@@ -368,11 +306,12 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
 
 <div class="container">
 
+  <!-- HERO -->
   <div class="hero" id="summary">
-    <label class="avatar" id="avatarBox">
-      <span id="avatarPlaceholder">Upload<br>photo</span>
-      <input type="file" accept="image/*" id="avatarInput">
-    </label>
+    <div class="avatar" id="avatarBox">
+      <span class="avatar-fallback" id="avatarFallback">Ajay S.</span>
+      <img id="avatarImg" src="" alt="Ajay Singh Sisodiya" style="display:none;">
+    </div>
     <div class="hero-text">
       <h1>Ajay Singh Sisodiya</h1>
       <div class="role">Product Manager &middot; Product &amp; Data Analyst</div>
@@ -393,6 +332,7 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
     </div>
   </div>
 
+  <!-- SUMMARY -->
   <section>
     <h2>Summary</h2>
     <p class="summary">Product Analyst with 3+ years converting data into product decisions, currently scaling monetisation and UX at InstaAstro &mdash; driving 50% GMV growth and 500% astrologer earnings uplift. Ranked top fellow at the NextLeap PM Fellowship (82%, 250+ peers), with proven execution in user research, product prioritisation, and Figma prototyping.</p>
@@ -404,10 +344,10 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience">
     <h2>Experience timeline</h2>
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Jun 2024 &ndash; Apr 2025</div>
@@ -420,7 +360,6 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
           <li>Streamlined consultation flow, lifting session completion and satisfaction.</li>
         </ul>
       </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Sep 2023 &ndash; Jan 2024</div>
@@ -433,7 +372,6 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
           <li>Defined freemium model with success metrics and risk mitigation.</li>
         </ul>
       </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Mar 2022 &ndash; Jun 2023</div>
@@ -445,7 +383,6 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
           <li>Built KPI dashboards; delivered $1M+ in client projects.</li>
         </ul>
       </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Mar 2021 &ndash; Feb 2022</div>
@@ -457,7 +394,6 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
           <li>Designed a sales-tracking dashboard end to end.</li>
         </ul>
       </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-date">Dec 2020 &ndash; Feb 2021</div>
@@ -468,41 +404,26 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
           <li>Established data quality metrics for analytical reliability.</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-  <section>
+  <!-- CASE STUDIES -->
+  <section id="casestudies">
     <h2>Case studies &amp; work samples</h2>
-    <div class="upload-grid">
-      <label class="upload-card">
-        <div class="ico">&#128196;</div>
-        <div class="label">Upload case study PDF</div>
-        <div class="sub">PDF, up to 20MB</div>
-        <input type="file" accept="application/pdf" id="pdfInput" multiple>
-      </label>
-      <div class="upload-card" style="cursor:default;">
-        <div class="ico">&#128279;</div>
-        <div class="label">Add a project link</div>
-        <div class="sub">Notion, Figma, deck, etc.</div>
-      </div>
+    <div class="case-grid" id="caseGrid">
+      <!-- Populated by JS from admin config -->
     </div>
-    <div class="link-input-row">
-      <input type="text" id="linkInput" placeholder="Paste link title | https://...">
-      <button id="addLinkBtn">Add</button>
-    </div>
-    <div class="file-list" id="fileList"></div>
   </section>
 
+  <!-- INTRO VIDEO -->
   <section>
     <h2>Introduction video</h2>
-    <label class="video-box" id="videoBox">
-      <span class="ico">&#9654;</span>
-      <span>Upload a short intro video</span>
-      <input type="file" accept="video/*" id="videoInput">
-    </label>
+    <div id="videoSection">
+      <!-- Populated by JS from admin config -->
+    </div>
   </section>
 
+  <!-- SKILLS -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skill-groups">
@@ -538,6 +459,7 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
     </div>
   </section>
 
+  <!-- EDUCATION -->
   <section id="education">
     <h2>Education</h2>
     <div class="edu-card reveal">
@@ -547,6 +469,7 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact-section reveal">
@@ -586,24 +509,138 @@ footer{text-align:center; color:var(--text-muted); font-size:13.5px; padding:3re
 </div><!-- /mainSite -->
 
 <script>
-// ===== CONFIG =====
+// ===== DEFAULT CONFIG (Edit these before uploading to GitHub) =====
+const DEFAULT_CONFIG = {
+  avatar: "",           // e.g., "images/avatar.jpg" or "https://your-cdn.com/avatar.jpg"
+  resume: "",           // e.g., "files/resume.pdf" or "https://drive.google.com/..."
+  video: "",            // e.g., "videos/intro.mp4" or "https://youtube.com/embed/..."
+  caseStudies: [
+    // { title: "InstaAstro Revenue Growth", url: "https://...", icon: "&#128200;" },
+    // { title: "Finease PM Case Study", url: "https://...", icon: "&#128179;" },
+    // { title: "Data Dashboard Project", url: "https://...", icon: "&#128202;" },
+    // { title: "A/B Testing Analysis", url: "https://...", icon: "&#128200;" }
+  ]
+};
+
 const ADMIN_PASSWORD = 'ajay2026';
 let siteVisible = true;
-let resumeLink = '';
 
 // ===== DYNAMIC YEAR =====
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== LOAD CONFIG =====
+function getConfig(){
+  const saved = localStorage.getItem('ajay_config');
+  return saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+}
+
+function saveConfig(config){
+  localStorage.setItem('ajay_config', JSON.stringify(config));
+}
+
+// ===== RENDER CONTENT =====
+function renderContent(){
+  const config = getConfig();
+
+  // Avatar
+  const avatarImg = document.getElementById('avatarImg');
+  const avatarFallback = document.getElementById('avatarFallback');
+  if(config.avatar && config.avatar.trim() !== ''){
+    avatarImg.src = config.avatar;
+    avatarImg.style.display = 'block';
+    avatarFallback.style.display = 'none';
+  } else {
+    avatarImg.style.display = 'none';
+    avatarFallback.style.display = 'flex';
+  }
+
+  // Resume button
+  const resumeBtn = document.getElementById('downloadResumeBtn');
+  if(!config.resume || config.resume.trim() === ''){
+    resumeBtn.style.opacity = '0.5';
+    resumeBtn.style.pointerEvents = 'none';
+    resumeBtn.title = 'Resume not uploaded yet';
+  } else {
+    resumeBtn.style.opacity = '1';
+    resumeBtn.style.pointerEvents = 'auto';
+    resumeBtn.title = 'Download Resume';
+  }
+
+  // Case Studies
+  const caseGrid = document.getElementById('caseGrid');
+  caseGrid.innerHTML = '';
+  if(config.caseStudies && config.caseStudies.length > 0){
+    config.caseStudies.forEach(function(cs){
+      const card = document.createElement('a');
+      card.className = 'case-card reveal';
+      card.href = cs.url;
+      card.target = '_blank';
+      card.innerHTML = '<div class="case-ico">' + (cs.icon || '&#128196;') + '</div><div class="case-title">' + cs.title + '</div><div class="case-desc">Click to view case study</div>';
+      caseGrid.appendChild(card);
+    });
+  } else {
+    caseGrid.innerHTML = '<div class="case-empty" style="grid-column:1/-1;">No case studies added yet. Add them in the Admin Panel.</div>';
+  }
+
+  // Video
+  const videoSection = document.getElementById('videoSection');
+  if(config.video && config.video.trim() !== ''){
+    if(config.video.includes('youtube.com') || config.video.includes('youtu.be')){
+      // YouTube embed
+      let videoId = '';
+      if(config.video.includes('v=')) videoId = config.video.split('v=')[1].split('&')[0];
+      else if(config.video.includes('youtu.be/')) videoId = config.video.split('youtu.be/')[1];
+      videoSection.innerHTML = '<div class="video-container"><iframe width="100%" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+    } else if(config.video.includes('vimeo.com')){
+      // Vimeo embed
+      const vimeoId = config.video.split('/').pop();
+      videoSection.innerHTML = '<div class="video-container"><iframe src="https://player.vimeo.com/video/' + vimeoId + '" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
+    } else {
+      // Direct video file
+      videoSection.innerHTML = '<div class="video-container"><video controls><source src="' + config.video + '" type="video/mp4">Your browser does not support the video tag.</video></div>';
+    }
+  } else {
+    videoSection.innerHTML = '<div class="video-placeholder"><div class="ico">&#127909;</div><span>No introduction video added yet</span></div>';
+  }
+
+  // Re-observe new elements for scroll animation
+  document.querySelectorAll('.case-card.reveal').forEach(function(el){
+    observer.observe(el);
+  });
+}
 
 // ===== ADMIN PANEL =====
 function toggleAdmin(){
   const panel = document.getElementById('adminPanel');
   panel.classList.toggle('active');
   document.getElementById('adminStatus').style.display = 'none';
+  if(panel.classList.contains('active')){
+    loadAdminValues();
+  }
 }
 
 function showAdmin(){
   document.getElementById('maintenanceOverlay').classList.remove('active');
   document.getElementById('adminPanel').classList.add('active');
+  loadAdminValues();
+}
+
+function loadAdminValues(){
+  const config = getConfig();
+  document.getElementById('adminAvatar').value = config.avatar || '';
+  document.getElementById('adminResume').value = config.resume || '';
+  document.getElementById('adminVideo').value = config.video || '';
+
+  // Load case studies into inputs
+  const cases = config.caseStudies || [];
+  for(let i = 0; i < 4; i++){
+    const input = document.getElementById('adminCase' + (i+1));
+    if(cases[i]){
+      input.value = cases[i].title + ' | ' + cases[i].url;
+    } else {
+      input.value = '';
+    }
+  }
 }
 
 function toggleSite(){
@@ -618,25 +655,42 @@ function saveAdminSettings(){
     alert('Incorrect password!');
     return;
   }
-  resumeLink = document.getElementById('resumeLinkInput').value.trim();
+
+  const config = {
+    avatar: document.getElementById('adminAvatar').value.trim(),
+    resume: document.getElementById('adminResume').value.trim(),
+    video: document.getElementById('adminVideo').value.trim(),
+    caseStudies: []
+  };
+
+  // Parse case studies
+  for(let i = 1; i <= 4; i++){
+    const val = document.getElementById('adminCase' + i).value.trim();
+    if(val && val.includes('|')){
+      const parts = val.split('|');
+      config.caseStudies.push({
+        title: parts[0].trim(),
+        url: parts[1].trim(),
+        icon: '&#128196;'
+      });
+    }
+  }
+
+  saveConfig(config);
   localStorage.setItem('ajay_siteVisible', siteVisible);
-  localStorage.setItem('ajay_resumeLink', resumeLink);
   applySettings();
+  renderContent();
+
   const status = document.getElementById('adminStatus');
   status.textContent = 'Settings saved!';
-  status.classList.remove('hidden');
   status.style.display = 'block';
-  setTimeout(()=>{ status.style.display = 'none'; }, 2000);
+  setTimeout(function(){ status.style.display = 'none'; }, 2000);
 }
 
 function applySettings(){
   const savedVisible = localStorage.getItem('ajay_siteVisible');
-  const savedResume = localStorage.getItem('ajay_resumeLink');
   if(savedVisible !== null) siteVisible = savedVisible === 'true';
-  if(savedResume !== null) resumeLink = savedResume;
-
   document.getElementById('siteToggle').classList.toggle('on', siteVisible);
-  document.getElementById('resumeLinkInput').value = resumeLink;
 
   if(!siteVisible){
     document.getElementById('maintenanceOverlay').classList.add('active');
@@ -650,11 +704,11 @@ function applySettings(){
 // ===== DOWNLOAD RESUME =====
 function downloadResume(e){
   e.preventDefault();
-  const link = localStorage.getItem('ajay_resumeLink') || resumeLink;
-  if(link && link.trim() !== ''){
-    window.open(link, '_blank');
+  const config = getConfig();
+  if(config.resume && config.resume.trim() !== ''){
+    window.open(config.resume, '_blank');
   } else {
-    alert('Resume link not set yet. Please add it in the Admin Panel (gear icon bottom-right).');
+    alert('Resume not uploaded yet. Add it in the Admin Panel (gear icon bottom-right).');
   }
 }
 
@@ -671,84 +725,27 @@ function handleContact(e){
   const email = document.getElementById('cEmail').value.trim();
   const subject = document.getElementById('cSubject').value.trim();
   const message = document.getElementById('cMessage').value.trim();
-  const body = 'Hi Ajay,\n\n' + message + '\n\n&mdash; ' + name + '\n' + email;
+  const body = 'Hi Ajay,\n\n' + message + '\n\n— ' + name + '\n' + email;
   window.location.href = 'mailto:ajaysinghsisodiya143@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
-// ===== AVATAR UPLOAD =====
-const avatarInput = document.getElementById('avatarInput');
-const avatarBox = document.getElementById('avatarBox');
-const avatarPlaceholder = document.getElementById('avatarPlaceholder');
-avatarInput.addEventListener('change', e => {
-  const file = e.target.files[0];
-  if(!file) return;
-  const url = URL.createObjectURL(file);
-  avatarPlaceholder.style.display='none';
-  let img = avatarBox.querySelector('img');
-  if(!img){ img = document.createElement('img'); avatarBox.insertBefore(img, avatarInput); }
-  img.src = url;
-});
-
-// ===== FILE LIST =====
-const fileList = document.getElementById('fileList');
-function addFileRow(name, url, removable){
-  removable = removable !== false;
-  const row = document.createElement('div');
-  row.className='file-row';
-  row.innerHTML = '<a href="' + url + '" target="_blank">' + name + '</a>';
-  if(removable){
-    const btn = document.createElement('button');
-    btn.textContent='Remove';
-    btn.onclick = function(){ row.remove(); };
-    row.appendChild(btn);
-  }
-  fileList.appendChild(row);
-}
-
-document.getElementById('pdfInput').addEventListener('change', e=>{
-  Array.from(e.target.files).forEach(file=>{
-    addFileRow(file.name, URL.createObjectURL(file));
-  });
-});
-
-document.getElementById('addLinkBtn').addEventListener('click', ()=>{
-  const val = document.getElementById('linkInput').value.trim();
-  if(!val) return;
-  let title = val, url = val;
-  if(val.includes('|')){
-    const parts = val.split('|');
-    title = parts[0].trim();
-    url = parts[1].trim();
-  }
-  if(!/^https?:\/\//.test(url)) url = 'https://' + url;
-  addFileRow(title, url);
-  document.getElementById('linkInput').value='';
-});
-
-// ===== VIDEO UPLOAD =====
-const videoInput = document.getElementById('videoInput');
-const videoBox = document.getElementById('videoBox');
-videoInput.addEventListener('change', e=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const url = URL.createObjectURL(file);
-  videoBox.innerHTML = '<video src="' + url + '" controls></video>';
-});
-
 // ===== SCROLL REVEAL =====
-const revealEls = document.querySelectorAll('.reveal, .tl-item');
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
 }, {threshold:0.12, rootMargin:'0px 0px -30px 0px'});
-revealEls.forEach(el=>observer.observe(el));
+
+document.querySelectorAll('.reveal, .tl-item').forEach(function(el){
+  observer.observe(el);
+});
 
 // ===== INIT =====
 applySettings();
+renderContent();
 </script>
 </body>
 </html>
