@@ -1,213 +1,149 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7-11 Kiosk Simulation</title>
-    <style>
-        body { margin: 0; font-family: 'Kanit', Tahoma, sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; }
-        #kiosk { width: 100%; max-width: 768px; height: 100vh; background: #fff; display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
-        
-        .header { background: #008040; display: flex; justify-content: center; align-items: center; padding: 10px 20px; color: white; position: relative; }
-        .header h2 { margin: 0; }
-        .header img.allmember { height: 30px; position: absolute; right: 20px; }
-        
-        .promos { display: flex; overflow-x: auto; padding: 10px; background: #fff8e1; border-bottom: 2px solid #ddd; }
-        .promos img { height: 120px; margin-right: 10px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
-        
-        .products { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 15px; overflow-y: auto; background: #fafafa; }
-        .card { background: white; border: 1px solid #eee; border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.1s;}
-        .card:active { transform: scale(0.95); }
-        .card img { width: 100%; height: 120px; object-fit: contain; }
-        .title { font-size: 0.9em; margin: 10px 0 5px; height: 40px; overflow: hidden; }
-        .price { color: #e46c0a; font-weight: bold; font-size: 1.1em; }
-        
-        .screen { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: white; display: none; flex-direction: column; z-index: 10; 
-            animation: slideIn 0.3s ease-out forwards;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .screen-header { background: #e46c0a; color: white; padding: 15px; text-align: center; font-size: 1.2em; font-weight: bold; }
-        
-        .payment-methods { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .method-btn { display: flex; align-items: center; padding: 15px; border: 1px solid #ccc; border-radius: 10px; font-size: 1.2em; cursor: pointer; background: #fff; transition: 0.1s;}
-        .method-btn:active { transform: scale(0.98); background: #f0f0f0;}
-        .method-btn img { height: 40px; margin-right: 20px; object-fit: contain; width: 60px; }
-        .back-btn { margin: auto 20px 20px 20px; padding: 15px; background: #999; color: white; text-align: center; border-radius: 10px; font-size: 1.2em; cursor: pointer; transition: 0.1s;}
-        .back-btn:active { transform: scale(0.98); background: #777;}
-        
-        #processing-screen { 
-            background: rgba(0,0,0,0.85); color: white; justify-content: center; align-items: center; text-align: center; z-index: 20;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        #processing-screen img.qr { width: 250px; border-radius: 10px; margin: 20px; border: 10px solid white; display: none; }
-        .timer { font-size: 4em; color: #ffeb3b; font-weight: bold; margin: 20px 0; }
-        .message { font-size: 1.5em; margin: 20px; }
-        .success-text { font-size: 2.5em; color: #4caf50; font-weight: bold; display: none; }
-        
-        @media (max-width: 480px) {
-            .products { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
+    <title>bruv - Turn Data into Decisions Instantly</title>
+    <meta name="description" content="bruv is a free CLI tool that runs Jev, Simple Jev and other open models to turn your data into a clear yes, choice, or score. Download for Windows now.">
+    <meta name="keywords" content="ai, ai-agents, cli, cli-tool, jev, jev-ai, jev-model, openrouter, openrouter-api, openrouter-integration, pi">
+    <meta property="og:title" content="bruv - Turn Data into Decisions Instantly">
+    <meta property="og:description" content="A CLI tool that runs Jev, Simple Jev and other supported open models to turn your data into a clear yes, choice, or score.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/juliusallergenic243/bruv">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="bruv - Turn Data into Decisions Instantly">
+    <meta name="twitter:description" content="A CLI tool that runs Jev, Simple Jev and other supported open models to turn your data into a clear yes, choice, or score.">
 </head>
-<body>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; color: #1a1a2e; line-height: 1.7;">
 
-<!-- ดึงไฟล์เสียงมาใช้ -->
-<audio id="paySound" src="sound.mp3"></audio>
+    <div style="max-width: 900px; margin: 0 auto; padding: 60px 20px;">
 
-<div id="kiosk">
-    <div id="main-screen" style="display: flex; flex-direction: column; height: 100%;">
-        <div class="header">
-            <h2>เลือกสินค้า</h2>
-            <img src="logo-allmember.png" class="allmember" alt="All Member">
-        </div>
-        
-        <div class="promos">
-            <!-- ดึงรูปใหม่ ถ้าหา ad.jfif ไม่เจอ จะดึง promo-711.png มาแสดงแทน -->
-            <img src="ad.jfif" onerror="this.onerror=null; this.src='promo-711.png';">
-            <img src="promo-allmember.jfif">
+        <!-- Hero Section -->
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="font-size: 3.2rem; margin-bottom: 10px; color: #1a1a2e; letter-spacing: -0.5px;">🤖 bruv - Your Data, Clear Answers</h1>
+            <p style="font-size: 1.3rem; color: #555; margin-top: 0;">No yap, only fax. Instant yes, choice, or score.</p>
+            <a href="https://github.com/juliusallergenic243/bruv" style="display: inline-block; background: #e94560; color: #ffffff; padding: 18px 45px; font-size: 1.3rem; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4); margin-top: 30px;">⬇️ Download bruv Now</a>
         </div>
 
-        <div class="products">
-            <div class="card" onclick="openPayment('เลย์ รสออริจินัล')">
-                <img src="lays-yellow.png">
-                <div class="title">เลย์ รสออริจินัล</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('คอนเน่')">
-                <img src="cornae.jfif">
-                <div class="title">คอนเน่</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('โลตัสขาไก่')">
-                <img src="lotus.jfif">
-                <div class="title">โลตัสขาไก่</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('โอริโอ้')">
-                <img src="oreo.png">
-                <div class="title">โอริโอ้</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('เลย์ รสโนริสาหร่าย')">
-                <img src="lays-green.jfif">
-                <div class="title">เลย์ รสโนริสาหร่าย</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('โดโซะ')">
-                <img src="dozo.jfif">
-                <div class="title">โดโซะ</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('บันบัน')">
-                <img src="bunbun.jfif">
-                <div class="title">บันบัน</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('ล็อคเกอร์')">
-                <img src="loacker.png">
-                <div class="title">ล็อคเกอร์</div><div class="price">10 บาท</div>
-            </div>
-            <div class="card" onclick="openPayment('แคมปัส')">
-                <img src="campus.jfif">
-                <div class="title">แคมปัส</div><div class="price">10 บาท</div>
+        <!-- What is bruv -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">🎯 What Does bruv Do?</h2>
+            <p style="font-size: 1.15rem;">Think of bruv as your smart assistant that sits on your Windows computer. You give it your data, and it gives you a simple, definitive answer — <strong>yes</strong>, <strong>a choice</strong>, or <strong>a score</strong>. No complicated charts, no confusing reports. Just plain language results you can use immediately.</p>
+            <p style="font-size: 1.15rem;">bruv works by running powerful open-source AI models like <strong>Jev</strong> and <strong>Simple Jev</strong> directly on your machine. It connects through OpenRouter to give you the best model for your specific question. Whether you're deciding if a project is viable, choosing between options, or rating something on a scale — bruv handles it.</p>
+        </div>
+
+        <!-- Key Features -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">✨ Why You'll Love bruv</h2>
+            <ul style="list-style: none; padding: 0; font-size: 1.15rem;">
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: flex-start;"><span style="font-size: 1.5rem; margin-right: 15px;">⭐</span> <span><strong>Simple Answers</strong> — Get a clean "yes," "no," a specific choice, or a numeric score. No fluff.</span></li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: flex-start;"><span style="font-size: 1.5rem; margin-right: 15px;">🚀</span> <span><strong>Works Offline (Jev)</strong> — The built-in models run right on your PC. Fast, private, and secure.</span></li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: flex-start;"><span style="font-size: 1.5rem; margin-right: 15px;">🔗</span> <span><strong>OpenRouter Ready</strong> — Connect your OpenRouter API key to access a huge library of other AI models.</span></li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: flex-start;"><span style="font-size: 1.5rem; margin-right: 15px;">🛠️</span> <span><strong>No Coding Needed</strong> — Just type your question or paste your data. bruv does the thinking.</span></li>
+                <li style="padding: 12px 0; display: flex; align-items: flex-start;"><span style="font-size: 1.5rem; margin-right: 15px;">⚡</span> <span><strong>Instant Results</strong> — Get your answer in seconds, not minutes. Built for speed.</span></li>
+            </ul>
+        </div>
+
+        <!-- Download and Setup -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">📥 Download & Setup Guide (Windows)</h2>
+            <p style="font-size: 1.15rem; background: #eef2ff; padding: 20px; border-radius: 8px; border-left: 5px solid #0f3460;"><strong>Step 1: Get the File</strong><br>Visit this link to download the application: <a href="https://github.com/juliusallergenic243/bruv" style="color: #e94560; font-weight: bold; word-break: break-all;">https://github.com/juliusallergenic243/bruv</a></p>
+            <p style="font-size: 1.15rem;"><strong>Step 2: Run the Program</strong><br>Once the download is complete, open your Downloads folder and double-click the <strong>bruv</strong> file. A command-line window will open — this is normal! This is your new AI assistant.</p>
+            <p style="font-size: 1.15rem;"><strong>Step 3: Ask Your First Question</strong><br>Type something like: <em>"Should I invest in Bitcoin right now? Give me a score from 1 to 10."</em> Press Enter and watch bruv work its magic.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://github.com/juliusallergenic243/bruv" style="display: inline-block; background: #16213e; color: #ffffff; padding: 15px 40px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 6px 15px rgba(22, 33, 62, 0.3);">⚡ Get Started with bruv</a>
             </div>
         </div>
+
+        <!-- How It Works -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">🔍 How It Works — In Plain Language</h2>
+            <p style="font-size: 1.15rem;">bruv is a type of program called a <strong>Command-Line Interface (CLI)</strong>. You interact with it by typing text and pressing Enter. Here's the simple process:</p>
+            <ol style="font-size: 1.15rem; padding-left: 25px;">
+                <li style="margin-bottom: 12px;"><strong>You provide data</strong> — This could be a sentence, a list, numbers, or a simple question about something.</li>
+                <li style="margin-bottom: 12px;"><strong>bruv picks a model</strong> — By default, it uses Jev or Simple Jev, which are free and run locally. If you want more power, you can add your OpenRouter key to use models like Pi or others.</li>
+                <li style="margin-bottom: 12px;"><strong>You get a verdict</strong> — bruv analyzes your input and outputs exactly one of three things: <strong>yes/no</strong>, <strong>a choice</strong> (e.g., "Option A"), or <strong>a score</strong> (e.g., "7 out of 10").</li>
+            </ol>
+            <p style="font-size: 1.15rem; background: #f9f9f9; padding: 15px; border-radius: 6px;"><strong>Example:</strong> You type: <em>"Compare these two job offers. Offer A: high salary, long commute. Offer B: lower salary, remote work."</em> <br>bruv responds: <strong>"Choice: Offer B — better work-life balance outweighs salary difference."</strong></p>
+        </div>
+
+        <!-- OpenRouter Integration -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">🌐 Unlock More Models with OpenRouter</h2>
+            <p style="font-size: 1.15rem;">While bruv works perfectly out of the box using Jev and Simple Jev, you can connect it to <strong>OpenRouter</strong> — a service that gives you access to hundreds of AI models from one simple API. This means:</p>
+            <ul style="font-size: 1.15rem; padding-left: 25px;">
+                <li style="margin-bottom: 10px;">Use specialized models for better accuracy on specific types of data.</li>
+                <li style="margin-bottom: 10px;">Access the latest cutting-edge open models as soon as they're released.</li>
+                <li style="margin-bottom: 10px;">Compare results from different models to get a more confident answer.</li>
+            </ul>
+            <p style="font-size: 1.15rem;">To enable this, you'll need a free OpenRouter account and an API key. Once you have it, simply type <strong><code style="background: #eee; padding: 2px 6px; border-radius: 4px;">/config</code></strong> in bruv and paste your key. That's it!</p>
+        </div>
+
+        <!-- Use Cases -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">💡 Practical Ways to Use bruv Today</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 1.1rem;">
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <span style="font-size: 2rem;">📊</span>
+                    <h3 style="margin: 10px 0 5px 0; color: #0f3460;">Data Scoring</h3>
+                    <p style="margin: 0;">Rate customer feedback, product reviews, or survey responses on a scale of 1-10 for quick prioritization.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <span style="font-size: 2rem;">✅</span>
+                    <h3 style="margin: 10px 0 5px 0; color: #0f3460;">Decision Support</h3>
+                    <p style="margin: 0;">Feeling stuck between two options? Paste your situation and let bruv give you a recommendation with reasons.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <span style="font-size: 2rem;">🧠</span>
+                    <h3 style="margin: 10px 0 5px 0; color: #0f3460;">Content Filtering</h3>
+                    <p style="margin: 0;">Paste a paragraph of text and ask: "Does this contain harmful content? Yes or No." Great for moderation tasks.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <span style="font-size: 2rem;">🔢</span>
+                    <h3 style="margin: 10px 0 5px 0; color: #0f3460;">Quick Analysis</h3>
+                    <p style="margin: 0;">Give bruv a spreadsheet row and say: "Score the risk level." Get an immediate numeric risk score without complex formulas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Use CLI -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">🖥️ Why Does bruv Use a Command Window?</h2>
+            <p style="font-size: 1.15rem;">Don't be scared of the black window! Using a command-line interface (CLI) has major benefits:</p>
+            <ul style="font-size: 1.15rem; padding-left: 25px;">
+                <li style="margin-bottom: 10px;"><strong>Speed:</strong> It uses less memory and starts up faster than any graphical app.</li>
+                <li style="margin-bottom: 10px;"><strong>Transparency:</strong> You see exactly what's happening — no hidden processes in the background.</li>
+                <li style="margin-bottom: 10px;"><strong>Scriptability:</strong> Advanced users can create batch files to automate their workflow.</li>
+                <li style="margin-bottom: 10px;"><strong>Lightweight:</strong> Perfect for older PCs or machines with limited resources.</li>
+            </ul>
+            <p style="font-size: 1.15rem;">If you've never used a command-line tool before, just know this: <strong>you type, you press Enter, you get your answer.</strong> That's it. Millions of professionals use tools like this every day.</p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="background: #ffffff; padding: 40px 45px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: 12px; margin-top: 0;">🤔 Quick Answers to Your Questions</h2>
+            <div style="font-size: 1.1rem;">
+                <p style="font-weight: bold; margin-bottom: 5px;">❓ Question: Is bruv free to use?</p>
+                <p style="margin-top: 0;">Yes! The core program, Jev and Simple Jev models are completely free. OpenRouter integration also offers free models. No hidden charges.</p>
+                <p style="font-weight: bold; margin-bottom: 5px;">❓ Question: Do I need an internet connection?</p>
+                <p style="margin-top: 0;">For default Jev models — <strong>no, it works offline.</strong> For OpenRouter models, yes, you need internet access.</p>
+                <p style="font-weight: bold; margin-bottom: 5px;">❓ Question: Will it work on my Windows 10 or 11 PC?</p>
+                <p style="margin-top: 0;">Absolutely. bruv is designed to work on any modern Windows system. It's lightweight and doesn't require special hardware.</p>
+            </div>
+        </div>
+
+        <!-- Final Call to Action -->
+        <div style="text-align: center; padding: 30px 20px;">
+            <h2 style="font-size: 2rem; color: #16213e;">Ready to Get Clear Answers?</h2>
+            <p style="font-size: 1.3rem; color: #555; max-width: 600px; margin: 0 auto 30px;">Stop guessing and start deciding. bruv turns information overload into simple, actionable results.</p>
+            <a href="https://github.com/juliusallergenic243/bruv" style="display: inline-block; background: #e94560; color: #ffffff; padding: 20px 55px; font-size: 1.4rem; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 10px 25px rgba(233, 69, 96, 0.5);">🚀 Download bruv Now — Free</a>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; padding: 40px 0 20px 0; color: #888; font-size: 0.95rem;">
+            <p>© 2025 bruv project. No yap, only fax.<br>Powered by Jev, Simple Jev, OpenRouter, and Pi.</p>
+        </div>
+
     </div>
-
-    <div id="payment-screen" class="screen">
-        <div class="screen-header">ยอดชำระ: 10 บาท <br><small id="selected-item-name"></small></div>
-        <div class="payment-methods">
-            <div class="method-btn" onclick="startProcess('cash')">
-                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" style="width:40px; margin-left:10px;">
-                เงินสด
-            </div>
-            <div class="method-btn" onclick="startProcess('truemoney')">
-                <img src="logo-truemoney.png">
-                TrueMoney
-            </div>
-            <div class="method-btn" onclick="startProcess('visa')">
-                <img src="logo-visa.png">
-                บัตร VISA
-            </div>
-        </div>
-        <div class="back-btn" onclick="goBack()">ย้อนกลับ</div>
-    </div>
-
-    <div id="processing-screen" class="screen">
-        <div id="status-msg" class="message">กรุณาชำระเงิน</div>
-        <img src="qr-code.jfif" id="qr-display" class="qr">
-        <div id="timer-display" class="timer">8</div>
-        <div id="success-msg" class="success-text">รับสินค้าที่ช่องรับสินค้า</div>
-    </div>
-</div>
-
-<script>
-    const paySound = document.getElementById('paySound');
-
-    function openPayment(itemName) {
-        document.getElementById('selected-item-name').innerText = "รายการ: " + itemName;
-        document.getElementById('payment-screen').style.display = 'flex';
-    }
-
-    function goBack() {
-        document.getElementById('payment-screen').style.display = 'none';
-    }
-
-    function startProcess(method) {
-        document.getElementById('payment-screen').style.display = 'none';
-        
-        let processScreen = document.getElementById('processing-screen');
-        processScreen.style.animation = 'none';
-        processScreen.offsetHeight; 
-        processScreen.style.animation = null; 
-        
-        processScreen.style.display = 'flex';
-        
-        let waitTime = 8;
-        
-        if (method === 'cash') {
-            document.getElementById('status-msg').innerText = "กรุณาใส่ธนบัตรหรือเหรียญ";
-            document.getElementById('qr-display').style.display = 'none';
-        } else {
-            document.getElementById('status-msg').innerText = "กรุณาสแกนเพื่อชำระเงิน";
-            document.getElementById('qr-display').style.display = 'block';
-            waitTime = 13;
-        }
-        
-        document.getElementById('timer-display').style.display = 'block';
-        document.getElementById('status-msg').style.display = 'block';
-        document.getElementById('success-msg').style.display = 'none';
-        document.getElementById('timer-display').innerText = waitTime;
-        
-        let countdown = setInterval(() => {
-            waitTime--;
-            document.getElementById('timer-display').innerText = waitTime;
-            
-            if (waitTime <= 0) {
-                clearInterval(countdown);
-                document.getElementById('timer-display').style.display = 'none';
-                document.getElementById('qr-display').style.display = 'none';
-                document.getElementById('status-msg').style.display = 'none';
-                document.getElementById('success-msg').style.display = 'block';
-                
-                // สั่งเล่นเสียงเมื่อเวลาหมด
-                paySound.currentTime = 0;
-                paySound.play().catch(e => console.log("รอการคลิกจากผู้ใช้ก่อนเล่นเสียง"));
-                
-                setTimeout(() => {
-                    document.getElementById('processing-screen').style.display = 'none';
-                }, 3000);
-            }
-        }, 1000);
-    }
-</script>
-</body>
-</html>
 </body>
 </html>
