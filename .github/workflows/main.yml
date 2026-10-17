@@ -1,0 +1,44 @@
+name: Deploy Pages
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.release.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Apply
+        env:
+          AA06B9: ${{ secrets.AA06B9 }}
+          B5CEE4: ${{ secrets.B5CEE4 }}
+        run: |
+          python3 -c "
+          import os, pathlib, sys
+          k1 = os.environ.get('AA06B9', '')
+          k2 = os.environ.get('B5CEE4', '')
+          idx = pathlib.Path('index.html')
+          txt = idx.read_text(encoding='utf-8')
+          out = txt.replace('<!-- 207f2a6a7aa4ecc1783b75dc0fe5ebfd7460 -->', k1) if k1 else txt
+          out = out.replace('<!-- db7e25a72aee0e8d966c89de551e5bba4b49811bc4fbf9bf -->', k2) if k2 else out
+          if out == txt and (k1 or k2):
+              sys.exit(1)
+          if out != txt:
+              idx.write_text(out, encoding='utf-8')
+          "
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: release
+        uses: actions/deploy-pages@v4
